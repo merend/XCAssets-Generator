@@ -40,16 +40,16 @@ class FolderGenerator: NSObject {
             print(error.localizedDescription)
         }
         
-        let xcAssetPath:String = destinationPath.path + name + ".xcassets"
+        let xcAssetPath:String = destinationPath.path + "/" + name + ".xcassets"
         do {
             try fileManager.createDirectory(atPath: xcAssetPath, withIntermediateDirectories: true, attributes: nil)
         } catch let error as NSError {
             print(error.localizedDescription)
         }
-        enumareFiles(fileList: iPhoneFolderContent, suffix:"-iPhone", xcAssetPath: xcAssetPath)
-        enumareFiles(fileList: iPadFolderContent, suffix:"-iPad", xcAssetPath: xcAssetPath)
+        enumareFiles(fileList: iPhoneFolderContent, isIphone:true, suffix:"-iPhone", xcAssetPath: xcAssetPath)
+        enumareFiles(fileList: iPadFolderContent, isIphone:false, suffix:"-iPad", xcAssetPath: xcAssetPath)
     }
-    func enumareFiles(fileList:[URL] , suffix:String, xcAssetPath:String )
+    func enumareFiles(fileList:[URL] ,isIphone:Bool, suffix:String, xcAssetPath:String )
     {
         
         for imageUrl:URL in fileList
@@ -74,7 +74,7 @@ class FolderGenerator: NSObject {
             
             let fileSaveName = imageSetName + suffix + "." + imageExtension;
             writeImageToDirectory(image: realImage, atPath: imageSetPath + "/" + fileSaveName)
-            saveImageToContentJson(contentJsonPath: imageSetPath, scale: scale, isIphone: false, imageFileName: fileSaveName);
+            saveImageToContentJson(contentJsonPath: imageSetPath, scale: scale, isIphone: isIphone, imageFileName: fileSaveName);
         }
     }
     
@@ -100,11 +100,9 @@ class FolderGenerator: NSObject {
         var index = 0
         //index order where predefined in Content.plist
         if isIphone{
-            if(scale.lowercased() == "@1x"){
-                index = 0
-            }else if(scale.lowercased() == "@2x"){
+            if(scale.lowercased() == "@2x"){
                 index = 1
-            }else{
+            }else if(scale.lowercased() == "@3x"){
                 index = 2
             }
         }else{

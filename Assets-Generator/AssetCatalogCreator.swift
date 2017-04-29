@@ -52,7 +52,7 @@ extension AssetCatalogCreator {
 extension AssetCatalogCreator {
     @IBAction func generateAction(sender: AnyObject) {
     
-        guard self.assetFileName!.stringValue.characters.count == 0 else {
+        guard self.assetFileName!.stringValue.characters.count != 0 else {
             self.dialogOK(text: "Please enter XCAsset name")
             return
         }
