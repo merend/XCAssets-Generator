@@ -113,7 +113,7 @@ class FolderGenerator: NSObject {
             }
         }
         
-        let choosenDic:NSMutableDictionary = (contentImages[index] as! NSMutableDictionary).mutableCopy() as! NSMutableDictionary
+        let choosenDic:NSMutableDictionary = (contentImages[index] as! NSDictionary).mutableCopy() as! NSMutableDictionary
         choosenDic.setValue(imageFileName, forKey: "filename")
         
         let mutableCopyOfContentImages = contentImages.mutableCopy() as! NSMutableArray

@@ -34,7 +34,10 @@ class ContentCreator {
             
             let data : Data? = FileManager.default.contents(atPath: realPath)
             if let data = data{
-                return try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSMutableDictionary
+                
+                let dictionary = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
+                
+                return NSMutableDictionary(dictionary: dictionary)
             }
         }else{
             return self.createContentDictionary();
