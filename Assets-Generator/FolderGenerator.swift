@@ -83,7 +83,7 @@ class FolderGenerator: NSObject {
         let data = i.tiffRepresentation
         let bitmap = NSBitmapImageRep(data: data!)
         
-        let finalData = bitmap!.representation(using: .PNG, properties: [:])
+        let finalData = bitmap!.representation(using: .png, properties: [:])
         
         do {
             try finalData?.write(to: URL(fileURLWithPath: p), options: .atomic)

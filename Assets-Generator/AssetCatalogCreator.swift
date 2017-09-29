@@ -43,7 +43,7 @@ extension AssetCatalogCreator {
     func dialogOK(text: String) {
         let myPopup: NSAlert = NSAlert()
         myPopup.messageText = text
-        myPopup.alertStyle = NSAlertStyle.warning
+        myPopup.alertStyle = NSAlert.Style.warning
         myPopup.addButton(withTitle: "OK")
         myPopup.runModal()
     }
@@ -78,7 +78,7 @@ extension AssetCatalogCreator {
         let panel = openPanel()
         let clicked = panel.runModal()
         
-        if clicked == NSFileHandlingPanelOKButton {
+        if clicked.rawValue == NSFileHandlingPanelOKButton {
             for url in panel.urls {
                 
                 let button: Buttons = Buttons(rawValue: sender.tag)!

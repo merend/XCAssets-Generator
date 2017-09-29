@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        self.assetCatalogViewController = AssetCatalogCreator(nibName: "AssetsGenerator", bundle: nil)
+        self.assetCatalogViewController = AssetCatalogCreator(nibName: NSNib.Name(rawValue: "AssetsGenerator"), bundle: nil)
         window.contentView?.addSubview(self.assetCatalogViewController.view)
         self.assetCatalogViewController.view.frame = (window.contentView?.bounds)!
         

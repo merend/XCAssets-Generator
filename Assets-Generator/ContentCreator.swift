@@ -8,7 +8,7 @@
 import Foundation
 import Cocoa
 
-class ContentCreator: AnyObject {
+class ContentCreator {
     
     func createContentDictionary() -> NSMutableDictionary? {
         let bundlePath = Bundle.main.path(forResource: "Content", ofType: "plist")
